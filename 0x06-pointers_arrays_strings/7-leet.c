@@ -15,11 +15,10 @@ char *leet(char *str)
 	{
 		for (iTwo = 0; iTwo <= 7; iTwo++)
 		{
-			if (str[iOne] == letters[iTwo] ||
-			    str[iOne] - 32 == letters[iTwo])
+			if (str[iOne] == letters[iTwo] || str[iOne] - 32 == letters[iTwo]){
 				str[iOne] = iTwo + '0';
+			}
 		}
-
 		iOne++;
 	}
 
