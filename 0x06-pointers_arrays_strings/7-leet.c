@@ -8,23 +8,20 @@
  */
 char *leet(char *s)
 {
-	int count = 0, i;
-	int low_letters[] = {97, 101, 111, 116, 108};
-	int upp_letters[] = {65, 69, 79, 84, 76};
-	int numbers[] = {52, 51, 48, 55, 49};
+	int a[11] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
+	int b[11] = {'4', '4', '3', '3', '0', '0', '7', '7', '1', '1'};
 
-	while (*(s + count) != '\0')
+	int i, j;
+
+	for (j = 0; s[j] != '\0'; j++)
 	{
-		for (i = 0; i < 5; i++)
+		for (i = 0; a[i] != '\0'; i++)
 		{
-			if (*(s + count) == low_letters[i] || *(s + count) == upp_letters[i])
+			if (s[j] == a[i])
 			{
-				*(s + count) = numbers[i];
-				break;
+				s[j] = b[i];
 			}
 		}
-		count++;
 	}
-
 	return (s);
 }
