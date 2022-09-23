@@ -6,20 +6,25 @@
  *
  * Return: A pointer to the encoded string.
  */
-char *leet(char *str)
+char *leet(char *s)
 {
-	int iOne = 0, iTwo;
-	char letters[8] = {'O', 'L', '?', 'E', 'A', '?', '?', 'T'};
+	int count = 0, i;
+	int low_letters[] = {97, 101, 111, 116, 108};
+	int upp_letters[] = {65, 69, 79, 84, 76};
+	int numbers[] = {52, 51, 48, 55, 49};
 
-	while (str[iOne])
+	while (*(s + count) != '\0')
 	{
-		for (iTwo = 0; iTwo <= 7; iTwo++)
+		for (i = 0; i < 5; i++)
 		{
-			if (str[iOne] == letters[iTwo] ||
-				str[iOne] - 32 == letters[iTwo])
-				str[iOne] = iTwo + '0';
+			if (*(s + count) == low_letters[i] || *(s + count) == upp_letters[i])
+			{
+				*(s + count) = numbers[i];
+				break;
+			}
 		}
-		iOne++;
+		count++;
 	}
-	return (str);
+
+	return (s);
 }
