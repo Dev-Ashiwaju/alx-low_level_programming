@@ -4,7 +4,7 @@
 #include "lists.h"
 
 /**
-* print_listint - a func that prints all the elements of a list
+* @print_listint - a func that prints all the elements of a list
 * @h: holds the head to the linked list
 * Return: the number of nodes
 **/
