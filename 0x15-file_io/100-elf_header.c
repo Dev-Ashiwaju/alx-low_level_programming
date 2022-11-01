@@ -112,7 +112,6 @@ void print_version(char *ptr)
 {
 	int version = ptr[6];
 
-	A
 	printf("  Version:                           %d", version);
 
 	if (version == EV_CURRENT)
@@ -216,32 +215,32 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
 		exit(98);
 	}
-OB
-	fd = open(argv[1], O_RDONLY);
-OBOB
-OBOBOBOBOBOBOBOBOBOBOBOB	if (fd < 0)
-OBOB	{
-OBOB		dprintf(STDERR_FILENO, "Err: file can not be open\n");
-OBOBOBOB		exit(98);
-OBOB	}
-OBOBOBOB
-OBOB	lseek(fd, 0, SEEK_SET);
-	ret_read = read(fd, ptr, 27);
-OBOB
-OBOB	if (ret_read == -1)
-	{
-OBOB		dprintf(STDERR_FILENO, "Err: The file can not be read\n");
-		exit(98);
-OBOB	}
 
-OBOB	if (!check_elf(ptr))
-OBOBOBOB	{
-OB		dprintf(STDERR_FILENO, "Err: It is not an ELF\n");
-OBOB		exit(98);
+	fd = open(argv[1], O_RDONLY);
+
+	if (fd < 0)
+	{
+		dprintf(STDERR_FILENO, "Err: file can not be open\n");
+		exit(98);
+	}
+
+	lseek(fd, 0, SEEK_SET);
+	ret_read = read(fd, ptr, 27);
+
+	if (ret_read == -1)
+	{
+		dprintf(STDERR_FILENO, "Err: The file can not be read\n");
+		exit(98);
+	}
+
+	if (!check_elf(ptr))
+	{
+		dprintf(STDERR_FILENO, "Err: It is not an ELF\n");
+		exit(98);
 	}
 
 	check_sys(ptr);
 	close(fd);
 
-OB	return (0);
+	return (0);
 }
